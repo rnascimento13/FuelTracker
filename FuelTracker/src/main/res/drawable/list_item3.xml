@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_selected="true" android:drawable="@color/holo_green_dark" />
+    <item android:state_pressed="true" android:drawable="@color/holo_red_dark" />
+    <item android:state_focused="true" android:drawable="@color/black" />
+    <item android:state_hovered="true" android:drawable="@color/background_holo_dark" />
+    <item android:state_checkable="true" android:drawable="@color/holo_green_light" />
+    <item android:state_checked="true" android:drawable="@color/holo_purple" />
+    <item android:state_enabled="true" android:drawable="@color/holo_red_light" />
+    <item android:state_activated="true" android:drawable="@color/holo_orange_dark" />
+    <item android:state_window_focused="true" android:drawable="@color/holo_orange_light" />
+    <item android:drawable="@drawable/shape" />
+
+</selector>

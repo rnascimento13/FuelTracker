@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" >Fuel Tracker
+    </string>
+    <string name="app_description" >Controla o uso do combustível!!
+    </string>
+    <string name="action_settings" >Settings
+    </string>
+    <string name="menu_home" >Inicial
+    </string>
+    <string name="menu_list" >Lista
+    </string>
+    <string name="menu_add" >Adicionar
+    </string>
+    <string name="menu_settings" >Configuracoes
+    </string>
+    <string name="s_Choose_Fuel_Type" >Escolha o tipo de combustível!
+    </string>
+    <string name="addFuel" >Add Fuel!</string>
+    <string name="FuelType1" >Gasolina</string>
+    <string name="FuelType2" >Alcool</string>
+    <string name="FuelQuantityUnit" >Litros</string>
+    <string name="FuelPayUnit" >Reais</string>
+    <string name="FuelOdometerUnit" >Kilometros</string>
+    <string name="Refuel_View" >Refuel View</string>
+    <string name="tv_Refuel_Date" >Data:</string>
+    <string name="tv_Refuel_Type" >Tipo:</string>
+    <string name="tv_Refuel_Pay" >Valor:</string>
+    <string name="tv_Refuel_Quantity" >Quantidate:</string>
+    <string name="tv_Refuel_Odometer" >Odometro:</string>
+    <string name="tv_Refuel_Quantity_Unit" >Litros</string>
+    <string name="tv_Refuel_Odometer_Unit_Mile" >Milhas</string>
+    <string name="tv_Refuel_Odometer_Unit_Kilometers" >Kilometros</string>
+    <string name="tv_Refuel_Pay_Unit" >Reais</string>
+
+    <!-- Used in Navigation Drawer on FuelTrackerActivity.java -->
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+
+</resources>

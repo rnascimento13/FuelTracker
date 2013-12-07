@@ -1,0 +1,579 @@
+*--------------------*
+* Activity structure *  ----------------------- Helpers -> MyApp Application
+*--------------------*                                     GetData AsyncTask
+home                                                       FuelTracker DbHelper
+list                                                       Currency Handler
+Viewpager -> View -> Edit ->(back to view)                 Fuel Item
+            (swipe)                                        FuelList Adapter
+add ->(go to view)                                         ViewPager Adapter (inside RefuelViewPagerFragment)
+
+
+menu click
+--------------------------
+home *
+list *
+add
+edit
+save_edit
+save_add
+preferences *
+
+onListItemClick *
+--------------------------
+
+onListLongClick x
+--------------------------
+
+onSwipe *
+--------------------------
+
+home                (Menu List,Add,Prefs) (Menu_DP Add,Prefs)
+list                (Menu Home,Add,Prefs) (Menu_DP Add,Prefs)
+Viewpager -> View   (Menu Edit)
+           -> Edit  (Menu Save_Edit)
+add                 (Menu Save_Add)
+
+
+------------------------------------------------
+RefuelEditFragment
+
+FuelItemEdited
+FuelItem (refuelDate,type,quantity,pay,odometer)
+
+save_edit
+
+check if FuelItem != "" and != fuelItem
+createDB
+viewpager -> view
+
+------------------------------------------------
+RefuelAddFragment--
+
+FuelItemEdited (refuelDate,type,quantity,pay,odometer)
+
+onConfiguration change-
+FuelItemEdited
+
+
+onSave_add-
+
+check if FuelItemEdited != ""
+createDB
+viewpager -> view
+
+
+            android:configChanges="keyboardHidden|orientation|screenSize"
+
+
+
+
+      Fragment Activity
+  |      |        |
+List-ViewPager - Add
+         |   |
+       Edit--|
+
+
+
+
+
+
+MULTIPLE_MODAL aguarda interacao com usuario via actionbar
+MULTIPLE sem interacao
+
+AbsListView lista com orientacao e propriedades diferentes
+Listview listView padrao
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       /**
+
+               while ( loop && (backCount > 0) )
+               {
+                   RefuelViewPagerFragment.noBackStack = true;
+                   if (_BackString == MyApp.NULL_FRAGMENT_TAG) {
+                       myFM.popBackStackImmediate(); //if you add a entry passing trough showRefuelView, this BackStack entry must pop
+                       MyApp.stack.pop();
+                   } else if ((_BackString == MyApp.REFUEL_LIST_FRAGMENT_TAG) && dualPanel) {
+                       myFM.popBackStackImmediate(); //if you add a entry passing trough showRefuelView, this BackStack entry must pop
+                       MyApp.stack.pop();
+                   } else if (!MyApp.fuelListAdapter.isIDValid(MyApp.stack.lastElement())) {
+                       myFM.popBackStackImmediate(); //if the entry does not exist anymore must pop
+                       MyApp.stack.pop();
+                   } else if ( (MyApp.stack.lastElement() >= 0) && (_FragmentTag == MyApp.REFUEL_VIEW_FRAGMENT_TAG) ) { //if will show pageView and is already showing just pop and setCurrentItem
+                       final long _NewID = MyApp.stack.lastElement();
+                       myFM.popBackStackImmediate();
+                       MyApp.stack.pop();
+                       RefuelViewPagerFragment.noBackStack=true;
+                       RefuelViewPagerFragment.pager.setCurrentItem(MyApp.fuelListAdapter.getItemPositionByID(_NewID));
+                       return;
+                   } else if (MyApp.stack.lastElement() >= 0) { //if will show pageView and is not currently showing must load viewPagerFragment
+                       final long _NewID = MyApp.stack.lastElement();
+                       myFM.popBackStackImmediate();
+                       MyApp.stack.pop();
+                       showRefuelView(MyApp.fuelListAdapter.getItemPositionByID(_NewID),MyApp.NULL_FRAGMENT_INT,true);
+                       return;
+                   } else loop = false;
+                   backCount = myFM.getBackStackEntryCount();
+                   _BackString = myFM.getBackStackEntryAt(backCount - 1).getName();
+               }
+               if ( finishApp() ) return; //test again for finishApp
+               super.onBackPressed(); // Do the BackStack
+               updateMenu();
+               RefuelViewPagerFragment.noBackStack = false;
+
+
+                   if (backEntry == MyApp.NULL_FRAGMENT_INT) myFM.popBackStackImmediate(); //if you add a entry passing trough showRefuelView, this BackStack entry must pop
+                   else if ((backEntry == MyApp.REFUEL_LIST_FRAGMENT_INT) && dualPanel) myFM.popBackStackImmediate(); //if you add a entry passing trough showRefuelView, this BackStack entry must pop
+                   else if (!MyApp.fuelListAdapter.isIDValid(backEntry)) myFM.popBackStackImmediate(); //if the entry does not exist anymore must pop
+                   else if ( (backEntry >= 0) && (mFString == MyApp.REFUEL_VIEW_FRAGMENT_TAG) ) { //if will show pageView and is already showing just pop and setCurrentItem
+                       Toast.makeText(this, "V "+backEntry, Toast.LENGTH_SHORT).show();
+                       myFM.popBackStackImmediate();
+                       RefuelViewPagerFragment.noBackStack=true;
+                       RefuelViewPagerFragment.pager.setCurrentItem(MyApp.fuelListAdapter.getItemPositionByID(backEntry));
+                       return;
+                   } else
+                 else if (backEntry >= 0) { //if will show pageView and is not currently showing must load viewPagerFragment
+                       Toast.makeText(this, "O "+backEntry, Toast.LENGTH_SHORT).show();
+
+                       myFM.popBackStackImmediate();
+                       showRefuelView(MyApp.fuelListAdapter.getItemPositionByID(backEntry),MyApp.NULL_FRAGMENT_INT,true);
+                       return;
+                   }
+                   else loop = false;
+       //            if (loop) myFM.executePendingTransactions();
+                   backCount = myFM.getBackStackEntryCount();
+                   backEntry = Long.parseLong(myFM.getBackStackEntryAt(backCount - 1).getName());
+               }
+               if ( finishApp() ) return; //test again for finishApp
+               super.onBackPressed(); // Do the BackStack
+               updateMenu();
+               RefuelViewPagerFragment.noBackStack = false;
+        */
+
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@color/holo_light_selected" android:state_activated="true"/>
+    <item android:drawable="@color/holo_light_selected" android:state_checked="true"/>
+    <item android:drawable="@color/holo_light_selected" android:state_selected="true"/>
+    <item android:drawable="@color/holo_light_selected" android:state_pressed="true"/>
+    <item android:drawable="@color/holo_light_background"/>
+
+</selector>
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="holo_light_background">#ffe8e8e8</color>
+    <color name="holo_light_selected">#ff7cc9e5</color>
+
+</resources>
+
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@color/holo_light_selected" android:state_activated="true"/>
+    <item android:drawable="@color/holo_light_selected" android:state_checked="true"/>
+    <item android:drawable="@color/holo_light_selected" android:state_selected="true"/>
+    <item android:drawable="@color/holo_light_background" android:state_pressed="true"/>
+    <item android:drawable="@color/holo_light_background"/>
+
+</selector>
+
+import android.support.v4.app.DialogFragment;
+import com.actionbarsherlock.app.SherlockListFragment;
+import com.actionbarsherlock.view.ActionMode;
+import com.actionbarsherlock.view.Menu;
+
+public final class LibraryFragment
+        extends SherlockListFragment
+{
+
+    private MultiSelectionAdapter adapter;
+    private ListView list;
+
+    // if ActoinMode is null - assume we are in normal mode
+    private ActionMode actionMode;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState)
+    {
+        View v = inflater.inflate(R.layout.fragment_library, null);
+        this.list = (ListView) v.findViewById(android.R.id.list);
+        this.initListView();
+        return v;
+    }
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        if (this.actionMode != null) {
+            this.actionMode.finish();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateData();
+    }
+
+    // update ListView
+    protected void updateData()
+    {
+        if (adapter == null) {
+            return;
+        }
+        adapter.clear();
+        // my kinda stuff :)
+        File[] items = scan();
+        if (items != null) {
+            adapter.updateData(items);
+            if (actionMode != null) {
+                actionMode.invalidate();
+            }
+        }
+        // if empty - finish action mode.
+        if (actionMode != null && (files == null || files.length == 0)) {
+            actionMode.finish();
+        }
+    }
+
+    private void initListView()
+    {
+        this.adapter = new MultiSelectionAdapter(getActivity());
+        this.list.setAdapter(adapter);
+        this.list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+        {
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0,
+                    View arg1, int arg2, long arg3)
+            {
+                if (actionMode != null) {
+                    // if already in action mode - do nothing
+                    return false;
+                }
+                // set checked selected item and enter multi selection mode
+                adapter.setChecked(arg2, true);
+                getSherlockActivity().startActionMode(new ActionModeCallback());
+                actionMode.invalidate();
+                return true;
+            }
+        });
+        this.list.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                    long arg3)
+            {
+                if (actionMode != null) {
+                    // if action mode, toggle checked state of item
+                    adapter.toggleChecked(arg2);
+                    actionMode.invalidate();
+                } else {
+                    // do whatever you should on item click
+                }
+            }
+        });
+    }
+
+
+    // all our ActionMode stuff here :)
+    private final class ActionModeCallback
+            implements ActionMode.Callback
+    {
+
+        // " selected" string resource to update ActionBar text
+        private String selected = getActivity().getString(
+                R.string.library_selected);
+
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu)
+        {
+            adapter.enterMultiMode();
+            // save global action mode
+            actionMode = mode;
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu)
+        {
+            // remove previous items
+            menu.clear();
+            final int checked = adapter.getCheckedItemCount();
+            // update title with number of checked items
+            mode.setTitle(checked + this.selected);
+            switch (checked) {
+            case 0:
+                // if nothing checked - exit action mode
+                mode.finish();
+                return true;
+            case 1:
+                // all items - rename + delete
+                getSherlockActivity().getSupportMenuInflater().inflate(
+                        R.menu.library_context, menu);
+                return true;
+            default:
+                getSherlockActivity().getSupportMenuInflater().inflate(
+                        R.menu.library_context, menu);
+                // remove rename option - because we have more than one selected
+                menu.removeItem(R.id.library_context_rename);
+                return true;
+            }
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode mode,
+                com.actionbarsherlock.view.MenuItem item)
+        {
+            switch (item.getItemId()) {
+            case R.id.library_context_rename:
+                // start dialog for renaming
+                DialogFragment d = RenameDialog.instantiate(adapter.getFirstCheckedItem().getFile(), LibraryFragment.this);
+                d.show(getActivity().getSupportFragmentManager(), "dialog");
+                return true;
+
+            case R.id.library_context_delete:
+                Set<Integer> checked = adapter.getCheckedItems();
+                // iterate through selected items and delete them
+                for (Integer ci : checked) {
+                    adapter.getItem(ci.intValue()).getFile().delete();
+                }
+                updateData();
+                return true;
+            default:
+                return false;
+            }
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode)
+        {
+            adapter.exitMultiMode();
+            // don't forget to remove it, because we are assuming that if it's not null we are in ActionMode
+            actionMode = null;
+        }
+
+    }
+
+    /**
+     * Returns Dialog for renaming a library file
+     *
+     */
+    public static final class RenameDialog extends DialogFragment {
+
+        /**
+         * Instantiates the rename dialog
+         *
+         * @param f File to rename
+         * @param caller LibraryFragment instance that is calling this dialog
+         * @return Dialog for renaming the file
+         */
+        protected static final DialogFragment instantiate(File f, LibraryFragment caller) {
+            RenameDialog rd = new RenameDialog();
+            rd.file = f;
+            rd.caller = caller;
+            return rd;
+        }
+
+        private File file;
+        private LibraryFragment caller;
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainTabActivity.instance);
+    // build it
+            return builder.create();
+        }
+
+        @Override
+        public void onDismiss(DialogInterface dialog) {
+            super.onDismiss(dialog);
+            if (caller.actionMode != null) {
+                caller.actionMode.finish();
+            }
+        }
+    }
+
+}
+
+public final class MultiSelectionAdapter
+        extends BaseAdapter
+{
+    private LayoutInflater inflater;
+    private List<LibraryItem> items;
+
+    // all our checked indexes go here
+    private HashSet<Integer> checkedItems;
+
+    // multi selection mode flag
+    private boolean multiMode;
+
+    public LibraryAdapter(Context context, List<LibraryItem> items)
+    {
+        this.inflater = LayoutInflater.from(context);
+        this.items = items;
+        this.checkedItems = new HashSet<Integer>();
+    }
+
+    public LibraryAdapter(Context context)
+    {
+        this(context, new ArrayList<LibraryItem>());
+    }
+
+    public void enterMultiMode()
+    {
+        this.multiMode = true;
+        this.notifyDataSetChanged();
+    }
+
+    public void exitMultiMode()
+    {
+        this.checkedItems.clear();
+        this.multiMode = false;
+        this.notifyDataSetChanged();
+    }
+
+    public void setChecked(int pos, boolean checked)
+    {
+        if (checked) {
+            this.checkedItems.add(Integer.valueOf(pos));
+        } else {
+            this.checkedItems.remove(Integer.valueOf(pos));
+        }
+        if (this.multiMode) {
+            this.notifyDataSetChanged();
+        }
+    }
+
+    public boolean isChecked(int pos)
+    {
+        return this.checkedItems.contains(Integer.valueOf(pos));
+    }
+
+    public void toggleChecked(int pos)
+    {
+        final Integer v = Integer.valueOf(pos);
+        if (this.checkedItems.contains(v)) {
+            this.checkedItems.remove(v);
+        } else {
+            this.checkedItems.add(v);
+        }
+        this.notifyDataSetChanged();
+    }
+
+    public int getCheckedItemCount()
+    {
+        return this.checkedItems.size();
+    }
+
+    // we use this convinience method for rename thingie.
+    public LibraryItem getFirstCheckedItem()
+    {
+        for (Integer i : this.checkedItems) {
+            return this.items.get(i.intValue());
+        }
+        return null;
+    }
+
+    public Set<Integer> getCheckedItems()
+    {
+        return this.checkedItems;
+    }
+
+    public void clear()
+    {
+        this.items.clear();
+    }
+
+    public void updateData(LibraryItem[] data)
+    {
+        for (int i = 0; i < data.length; i++) {
+            this.items.add(data[i]);
+        }
+        this.checkedItems.clear();
+        this.notifyDataSetChanged();
+    }
+
+    @Override
+    public int getCount()
+    {
+        return this.items.size();
+    }
+
+    @Override
+    public LibraryItem getItem(int position)
+    {
+        return this.items.get(position);
+    }
+
+    @Override
+    public long getItemId(int position)
+    {
+        return position;
+    }
+
+    @Override
+    public boolean hasStableIds()
+    {
+        return true;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent)
+    {
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.list_item_library, null);
+            // convert view stuff cleared, to much code - do the usual Holder stuff here
+
+        }
+
+        //usual assign stuff here
+        //...
+
+
+        // the 4 state change problem described above. We use a second selector with no pressed state color if in multi mode
+        convertView
+                .setBackgroundResource(this.multiMode ? R.drawable.selector_list_multimode
+                        : R.drawable.selector_list);
+
+        if (checkedItems.contains(Integer.valueOf(position))) {
+            // if this item is checked - set checked state
+            convertView.getBackground().setState(
+                    new int[] { android.R.attr.state_checked });
+        } else {
+            // if this item is unchecked - set unchecked state (notice the minus)
+            convertView.getBackground().setState(
+                    new int[] { -android.R.attr.state_checked });
+        }
+
+
+        return convertView;
+    }
+
+}

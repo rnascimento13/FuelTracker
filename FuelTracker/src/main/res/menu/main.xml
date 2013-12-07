@@ -1,0 +1,46 @@
+    <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menu_Home"
+        android:title="@string/menu_home"
+        android:icon="@drawable/ic_menu_home"
+        android:orderInCategory="0"
+        android:showAsAction="always" />
+
+    <item android:id="@+id/menu_List"
+        android:title="@string/menu_list"
+        android:icon="@drawable/ic_menu_list"
+        android:orderInCategory="1"
+        android:showAsAction="always" />
+
+    <item android:id="@+id/menu_Add"
+        android:title="@string/menu_add"
+        android:icon="@drawable/ic_menu_add"
+        android:orderInCategory="2"
+        android:showAsAction="always" />
+
+    <item android:id="@+id/menu_Settings"
+        android:title="@string/menu_settings"
+        android:icon="@drawable/ic_menu_settings"
+        android:orderInCategory="3"
+        android:showAsAction="always" />
+
+    <item android:id="@+id/delete"
+        android:title="list_delete_menu"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:orderInCategory="4"
+        android:showAsAction="always" />
+
+    <item android:id="@+id/menu_RefuelEdit"
+        android:title="Edit"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:orderInCategory="5"
+        android:showAsAction="always" />
+
+    <item android:id="@+id/menu_refuelSave"
+        android:title="Salvar"
+        android:icon="@android:drawable/ic_menu_save"
+        android:orderInCategory="6"
+        android:showAsAction="always" />
+
+</menu>
+

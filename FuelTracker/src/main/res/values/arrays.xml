@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Used in Navigation Drawer on FuelTrackerActivity.java -->
+    <string-array name="nav_menu">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
+
+    <!-- Used in View/RefuelFragment.java -->
+    <string-array name="tipo">
+        <item>@string/FuelType2</item>
+        <item>@string/FuelType1</item>
+    </string-array>
+    <string-array name="odometer">
+        <item>@string/tv_Refuel_Odometer_Unit_Kilometers</item>
+        <item>@string/tv_Refuel_Odometer_Unit_Mile</item>
+    </string-array>
+    <string-array name="pay_unit">
+        <item>Reais</item>
+        <item>Dolars</item>
+    </string-array>
+
+    <string-array name="currency">
+        <item>@string/AFA_Currency_name</item>
+        <item>@string/ALL_Currency_name</item>
+        <item>@string/AMD_Currency_name</item>
+        <item>@string/AOA_Currency_name</item>
+        <item>@string/AWG_Currency_name</item>
+        <item>@string/AZM_Currency_name</item>
+        <item>@string/BAM_Currency_name</item>
+        <item>@string/BDT_Currency_name</item>
+        <item>@string/BGL_Currency_name</item>
+        <item>@string/BOB_Currency_name</item>
+        <item>@string/BRL_Currency_name</item>
+        <item>@string/BTN_Currency_name</item>
+        <item>@string/BWP_Currency_name</item>
+        <item>@string/BYR_Currency_name</item>
+        <item>@string/CHF_Currency_name</item>
+        <item>@string/CNY_Currency_name</item>
+        <item>@string/COP_Currency_name</item>
+        <item>@string/CRC_Currency_name</item>
+        <item>@string/CVE_Currency_name</item>
+        <item>@string/DZD_Currency_name</item>
+        <item>@string/EEK_Currency_name</item>
+        <item>@string/ERN_Currency_name</item>
+        <item>@string/ETB_Currency_name</item>
+        <item>@string/EUR_Currency_name</item>
+        <item>@string/GBP_Currency_name</item>
+        <item>@string/GEL_Currency_name</item>
+        <item>@string/GHC_Currency_name</item>
+        <item>@string/GMD_Currency_name</item>
+        <item>@string/GTQ_Currency_name</item>
+        <item>@string/HNL_Currency_name</item>
+        <item>@string/HRK_Currency_name</item>
+        <item>@string/HTG_Currency_name</item>
+        <item>@string/HUF_Currency_name</item>
+        <item>@string/IDR_Currency_name</item>
+        <item>@string/ILS_Currency_name</item>
+        <item>@string/INR_Currency_name</item>
+        <item>@string/IRR_Currency_name</item>
+        <item>@string/ISK_Currency_name</item>
+        <item>@string/JPY_Currency_name</item>
+        <item>@string/KES_Currency_name</item>
+        <item>@string/KGS_Currency_name</item>
+        <item>@string/KHR_Currency_name</item>
+        <item>@string/KPW_Currency_name</item>
+        <item>@string/KRW_Currency_name</item>
+        <item>@string/KZT_Currency_name</item>
+        <item>@string/LAK_Currency_name</item>
+        <item>@string/LSL_Currency_name</item>
+        <item>@string/LTL_Currency_name</item>
+        <item>@string/LVL_Currency_name</item>
+        <item>@string/MAD_Currency_name</item>
+        <item>@string/MDL_Currency_name</item>
+        <item>@string/MKD_Currency_name</item>
+        <item>@string/MNT_Currency_name</item>
+        <item>@string/MMK_Currency_name</item>
+        <item>@string/MOP_Currency_name</item>
+        <item>@string/MRO_Currency_name</item>
+        <item>@string/MTL_Currency_name</item>
+        <item>@string/MVR_Currency_name</item>
+        <item>@string/MWK_Currency_name</item>
+        <item>@string/MYR_Currency_name</item>
+        <item>@string/MZM_Currency_name</item>
+        <item>@string/NGN_Currency_name</item>
+        <item>@string/NIO_Currency_name</item>
+        <item>@string/NOK_Currency_name</item>
+        <item>@string/PAB_Currency_name</item>
+        <item>@string/PEN_Currency_name</item>
+        <item>@string/PGK_Currency_name</item>
+        <item>@string/PLN_Currency_name</item>
+        <item>@string/PYG_Currency_name</item>
+        <item>@string/SAR_Currency_name</item>
+        <item>@string/SEK_Currency_name</item>
+        <item>@string/SIT_Currency_name</item>
+        <item>@string/SKK_Currency_name</item>
+        <item>@string/SLL_Currency_name</item>
+        <item>@string/SPL_Currency_name</item>
+        <item>@string/STD_Currency_name</item>
+        <item>@string/SZL_Currency_name</item>
+        <item>@string/THB_Currency_name</item>
+        <item>@string/TJS_Currency_name</item>
+        <item>@string/TOP_Currency_name</item>
+        <item>@string/TRL_Currency_name</item>
+        <item>@string/UAH_Currency_name</item>
+        <item>@string/USD_Currency_name</item>
+        <item>@string/UZS_Currency_name</item>
+        <item>@string/XAU_Currency_name</item>
+        <item>@string/VEB_Currency_name</item>
+        <item>@string/VND_Currency_name</item>
+        <item>@string/VUV_Currency_name</item>
+        <item>@string/WST_Currency_name</item>
+        <item>@string/ZAR_Currency_name</item>
+    </string-array>
+</resources>

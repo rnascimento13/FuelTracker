@@ -1,0 +1,38 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Currency Preferences">
+
+        <CheckBoxPreference android:key="auto_currency_preference"
+                            android:title="Use this device currency"
+                            android:summary="This disable the 'Choose one currency' preference"
+                            android:defaultValue="true"/>
+
+        <ListPreference android:title="Choose one currency"
+                        android:key="currency_preference"
+                        android:defaultValue="USD"
+                        android:entries="@array/currency"
+
+                        android:entryValues="@array/currency">
+                        </ListPreference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Unidades">
+
+        <ListPreference android:title="Odometro"
+                        android:summary="This preference selects the species order for some viewing sightings activities"
+                        android:key="odometro"
+                        android:defaultValue="Milha"
+                        android:entries="@array/odometer"
+                        android:entryValues="@array/odometer">
+                        </ListPreference>
+
+        <EditTextPreference
+                android:key="edittext_preference"
+                android:title="title_edittext_preference"
+                android:summary="summary_edittext_preference"
+                android:dialogTitle="dialog_title_edittext_preference" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
